@@ -47,7 +47,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
     if let windowScene = scene as? UIWindowScene {
       let window = UIWindow(windowScene: windowScene)
       window.rootViewController = UIHostingController(
-        rootView: RegisterView(keyboardHandler: KeyboardFollower())
+        rootView: StarterView()
           .environmentObject(userManager)
       )
       self.window = window
