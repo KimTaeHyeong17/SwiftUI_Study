@@ -30,25 +30,32 @@
 /// OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 /// THE SOFTWARE.
 
-import UIKit
+import SwiftUI
 
-class KeyboardFollower : ObservableObject {
-    @Published var keyboardHeight: CGFloat = 0
-    @Published var isVisible = false
-    
-    init() {
-        NotificationCenter.default.addObserver(self, selector: #selector(keyboardVisibilityChanged), name: UIResponder.keyboardWillChangeFrameNotification, object: nil)
-    }
-    
-    deinit {
-        NotificationCenter.default.removeObserver(self, name: UIResponder.keyboardWillChangeFrameNotification, object: nil)
-    }
-    
-    @objc private func keyboardVisibilityChanged(_ notification: Notification) {
-        guard let userInfo = notification.userInfo else { return }
-        guard let keyboardEndFrame = userInfo[UIResponder.keyboardFrameEndUserInfoKey] as? CGRect else { return }
+struct WelcomeMessageView: View {
+    var body: some View {
         
-        isVisible = keyboardEndFrame.minY < UIScreen.main.bounds.height
-        keyboardHeight = isVisible ? keyboardEndFrame.height : 0
+        HStack{
+            LogoImage()
+            VStack {
+                Text("Welcome to")
+                    .font(.headline)
+                    .bold()
+                Text("Kuchi")
+                    .font(.largeTitle)
+                    .bold()
+            }
+            .foregroundColor(.red)
+            .lineLimit(2)
+            .multilineTextAlignment(.leading)
+            .padding(.horizontal)
+        }
+        
+    }
+}
+
+struct WelcomeMessageView_Previews: PreviewProvider {
+    static var previews: some View {
+        WelcomeMessageView()
     }
 }
