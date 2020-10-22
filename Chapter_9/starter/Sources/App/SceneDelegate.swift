@@ -50,6 +50,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
       window.rootViewController = UIHostingController(
         rootView: StarterView()
           .environmentObject(userManager)
+            .environmentObject(ChallengesViewModel())
       )
       self.window = window
       window.makeKeyAndVisible()
