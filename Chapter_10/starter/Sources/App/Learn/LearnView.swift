@@ -32,39 +32,24 @@
 
 import SwiftUI
 
-struct WelcomeView: View {
-    @EnvironmentObject var userManager: UserManager
-    @State var showPractice = false
+struct LearnView: View {
+    @ObservedObject  var learningStore = LearningStore(deck: ChallengesViewModel().challenges)
     
-    @ViewBuilder
     var body: some View {
-        if showPractice {
-            WelcomeView()
-        } else {
-            ZStack {
-                WelcomeBackgroundImage()
-                VStack {
-                    Text(verbatim: "Hi, \(userManager.profile.name)")
-                    
-                    WelcomeMessageView()
-                    
-                    Button(action: {
-                        self.showPractice = true
-                    }, label: {
-                        HStack {
-                            Image(systemName: "play")
-                            Text(verbatim: "Start")
-                        }
-                    })
-                }
-            }
+        VStack {
+            Spacer()
+            Text("Swipe left if you remembered"
+                    + "\nSwipe right if you didn’t") .font(.headline)
+            DeckView(onMemorized: {self.learningStore.score += 1}, deck: learningStore.deck)
+            Spacer()
+            Text("Remembered \(self.learningStore.score)" + "/\(self.learningStore.deck.cards.count)")
         }
+        
     }
 }
 
-struct WelcomeView_Previews: PreviewProvider {
+struct LearnView_Previews: PreviewProvider {
     static var previews: some View {
-        WelcomeView()
-            .environmentObject(UserManager())
+        LearnView()
     }
 }

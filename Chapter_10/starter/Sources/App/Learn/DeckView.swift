@@ -32,39 +32,51 @@
 
 import SwiftUI
 
-struct WelcomeView: View {
-    @EnvironmentObject var userManager: UserManager
-    @State var showPractice = false
+enum DiscaredDirection {
+    case left
+    case right
+}
+
+struct DeckView: View {
+    @ObservedObject var deck : FlashDeck
     
-    @ViewBuilder
+    let onMemorized: () -> Void
+    
+    init(onMemorized: @escaping () -> Void, deck : FlashDeck) {
+        self.onMemorized = onMemorized
+        self.deck = deck
+    }
+    
     var body: some View {
-        if showPractice {
-            WelcomeView()
-        } else {
-            ZStack {
-                WelcomeBackgroundImage()
-                VStack {
-                    Text(verbatim: "Hi, \(userManager.profile.name)")
-                    
-                    WelcomeMessageView()
-                    
-                    Button(action: {
-                        self.showPractice = true
-                    }, label: {
-                        HStack {
-                            Image(systemName: "play")
-                            Text(verbatim: "Start")
-                        }
-                    })
-                }
+        ZStack{
+            ForEach(deck.cards.filter{$0.isActive}){ card in
+                self.getCardView(for: card)
+            }
+            
+        }
+    }
+    func getCardView(for card: FlashCard) -> CardView {
+        let activeCard = deck.cards.filter{ $0.isActive == true}
+        if let lastCard = activeCard.last {
+            if lastCard == card {
+                return createCardView(for: card)
             }
         }
+        let view = createCardView(for: card)
+        return view
+    }
+    func createCardView(for card: FlashCard) -> CardView {
+        let view = CardView(card, onDrag: { card, direction in
+            if direction == .left {
+                self.onMemorized()
+            }
+        })
+        return view
     }
 }
 
-struct WelcomeView_Previews: PreviewProvider {
+struct DeckView_Previews: PreviewProvider {
     static var previews: some View {
-        WelcomeView()
-            .environmentObject(UserManager())
+        DeckView(onMemorized: {}, deck: FlashDeck(from: ChallengesViewModel().challenges))
     }
 }

@@ -32,39 +32,41 @@
 
 import SwiftUI
 
-struct WelcomeView: View {
+struct HomeView: View {
     @EnvironmentObject var userManager: UserManager
-    @State var showPractice = false
+    @EnvironmentObject var challengesViewModel: ChallengesViewModel
     
-    @ViewBuilder
     var body: some View {
-        if showPractice {
-            WelcomeView()
-        } else {
-            ZStack {
-                WelcomeBackgroundImage()
-                VStack {
-                    Text(verbatim: "Hi, \(userManager.profile.name)")
-                    
-                    WelcomeMessageView()
-                    
-                    Button(action: {
-                        self.showPractice = true
-                    }, label: {
-                        HStack {
-                            Image(systemName: "play")
-                            Text(verbatim: "Start")
-                        }
-                    })
+        TabView{
+            LearnView()
+                .tabItem({
+                    VStack{
+                        Image(systemName: "bookmark")
+                        Text("Learn")
+                    }
+                }).tag(0)
+            PracticeView(
+                challengeTest: $challengesViewModel.currentChallenge,
+                userName: $userManager.profile.name,
+                numberOfAnswered: .constant(challengesViewModel.numberOfAnswered)
+            )
+            .tabItem({
+                VStack{
+                    Image(systemName: "rectangle.dock")
+                    Text("Challenge")
                 }
-            }
+            })
+            .tag(1)
+            .environment(\.questionsPerSession, challengesViewModel.numberOfQuestions)
         }
+        .accentColor(.orange)
     }
 }
 
-struct WelcomeView_Previews: PreviewProvider {
+struct HomeView_Previews: PreviewProvider {
     static var previews: some View {
-        WelcomeView()
+        HomeView()
             .environmentObject(UserManager())
+            .environmentObject(ChallengesViewModel())
     }
 }

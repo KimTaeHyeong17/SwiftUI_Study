@@ -32,6 +32,13 @@
 		6758886022DA0C0B0015DE4B /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 6758885F22DA0C0B0015DE4B /* Preview Assets.xcassets */; };
 		6758886322DA0C0B0015DE4B /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6758886122DA0C0B0015DE4B /* LaunchScreen.storyboard */; };
 		67D0F51022E70EE6009CC869 /* jp.json in Resources */ = {isa = PBXBuildFile; fileRef = 67D0F50F22E70EE6009CC869 /* jp.json */; };
+		CED0D8F125417127009FB9BF /* LearnView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CED0D8F025417127009FB9BF /* LearnView.swift */; };
+		CED0D8F52541715B009FB9BF /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CED0D8F42541715B009FB9BF /* HomeView.swift */; };
+		CED0D8F8254174F6009FB9BF /* FlashCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = CED0D8F7254174F6009FB9BF /* FlashCard.swift */; };
+		CED0D8FB25417772009FB9BF /* FlashDeck.swift in Sources */ = {isa = PBXBuildFile; fileRef = CED0D8FA25417772009FB9BF /* FlashDeck.swift */; };
+		CED0D8FE254178A0009FB9BF /* LearningStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = CED0D8FD254178A0009FB9BF /* LearningStore.swift */; };
+		CED0D901254179F3009FB9BF /* CardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CED0D900254179F3009FB9BF /* CardView.swift */; };
+		CED0D90425417A36009FB9BF /* DeckView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CED0D90325417A36009FB9BF /* DeckView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -63,6 +70,13 @@
 		6758886422DA0C0B0015DE4B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		6758888C22DA0F3C0015DE4B /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		67D0F50F22E70EE6009CC869 /* jp.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = jp.json; sourceTree = "<group>"; };
+		CED0D8F025417127009FB9BF /* LearnView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LearnView.swift; sourceTree = "<group>"; };
+		CED0D8F42541715B009FB9BF /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
+		CED0D8F7254174F6009FB9BF /* FlashCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FlashCard.swift; sourceTree = "<group>"; };
+		CED0D8FA25417772009FB9BF /* FlashDeck.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FlashDeck.swift; sourceTree = "<group>"; };
+		CED0D8FD254178A0009FB9BF /* LearningStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LearningStore.swift; sourceTree = "<group>"; };
+		CED0D900254179F3009FB9BF /* CardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardView.swift; sourceTree = "<group>"; };
+		CED0D90325417A36009FB9BF /* DeckView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeckView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -167,6 +181,7 @@
 		6758888622DA0C310015DE4B /* App */ = {
 			isa = PBXGroup;
 			children = (
+				CED0D8EF25417100009FB9BF /* Learn */,
 				57B416232328677100647280 /* Practice */,
 				57EC3B4522FE38E900C2609A /* Profile */,
 				6758888922DA0D020015DE4B /* Resources */,
@@ -175,6 +190,7 @@
 				6758885622DA0C090015DE4B /* AppDelegate.swift */,
 				6758885822DA0C090015DE4B /* SceneDelegate.swift */,
 				5754AA5D2331789000F9275D /* StarterView.swift */,
+				CED0D8F42541715B009FB9BF /* HomeView.swift */,
 			);
 			path = App;
 			sourceTree = "<group>";
@@ -196,6 +212,19 @@
 			children = (
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		CED0D8EF25417100009FB9BF /* Learn */ = {
+			isa = PBXGroup;
+			children = (
+				CED0D8F025417127009FB9BF /* LearnView.swift */,
+				CED0D8F7254174F6009FB9BF /* FlashCard.swift */,
+				CED0D8FA25417772009FB9BF /* FlashDeck.swift */,
+				CED0D8FD254178A0009FB9BF /* LearningStore.swift */,
+				CED0D900254179F3009FB9BF /* CardView.swift */,
+				CED0D90325417A36009FB9BF /* DeckView.swift */,
+			);
+			path = Learn;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -274,13 +303,17 @@
 			buildActionMask = 2147483647;
 			files = (
 				5764106123304B400060CADD /* ChoicesView.swift in Sources */,
+				CED0D901254179F3009FB9BF /* CardView.swift in Sources */,
 				6758885722DA0C090015DE4B /* AppDelegate.swift in Sources */,
+				CED0D90425417A36009FB9BF /* DeckView.swift in Sources */,
 				577C653922FEF27800788AED /* BorderedViewModifier.swift in Sources */,
+				CED0D8F125417127009FB9BF /* LearnView.swift in Sources */,
 				57EC3B4922FE395600C2609A /* Profile.swift in Sources */,
 				5764106023304B400060CADD /* PracticeView.swift in Sources */,
 				5764106223304B400060CADD /* ChoicesRow.swift in Sources */,
 				570AD4892300D6C6006E62EE /* WelcomeMessageView.swift in Sources */,
 				5788F49D23076849003C33E2 /* KeyboardFollower.swift in Sources */,
+				CED0D8FB25417772009FB9BF /* FlashDeck.swift in Sources */,
 				57EC3B4422FE38BE00C2609A /* RegisterView.swift in Sources */,
 				570492B622EE4352006BB8FA /* WelcomeView.swift in Sources */,
 				57EC3B4722FE390C00C2609A /* UserManager.swift in Sources */,
@@ -288,11 +321,14 @@
 				6758885922DA0C090015DE4B /* SceneDelegate.swift in Sources */,
 				57B416252328679F00647280 /* ChallengeView.swift in Sources */,
 				5764105F23304B400060CADD /* QuestionView.swift in Sources */,
+				CED0D8FE254178A0009FB9BF /* LearningStore.swift in Sources */,
 				570CAF4722FEBD82003D2DC4 /* LogoImage.swift in Sources */,
 				5794FEBB23022A800018E788 /* Settings.swift in Sources */,
+				CED0D8F8254174F6009FB9BF /* FlashCard.swift in Sources */,
 				5754AA5E2331789000F9275D /* StarterView.swift in Sources */,
 				5764105A23304AFB0060CADD /* ChallengesViewModel.swift in Sources */,
 				57EC3B4C22FE3BB000C2609A /* WelcomeBackgroundImage.swift in Sources */,
+				CED0D8F52541715B009FB9BF /* HomeView.swift in Sources */,
 				5764106423304B700060CADD /* CongratulationsView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
