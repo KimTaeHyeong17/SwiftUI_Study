@@ -33,16 +33,25 @@ struct ContentView: View {
   
   var body: some View {
     NavigationView {
-      HStack {
-        ZStack {
-          Image(systemName: "airplane")
-            .resizable()
-            .aspectRatio(contentMode: .fit)
-            .frame(width: 250, height: 250, alignment: .center)
-            .opacity(0.1)
-            .rotationEffect(.degrees(-90))
+      ZStack {
+        Image(systemName: "airplane")
+          .resizable()
+          .aspectRatio(contentMode: .fit)
+          .opacity(0.1)
+          .rotationEffect(.degrees(-90))
+          .frame(width: 250, height: 250, alignment: .center)
+        VStack(alignment: .leading, spacing: 5, content: {
+          NavigationLink(destination: FlightBoard(boardName: "Arrivals", flightData: self.flightInfo.arrivals())){
+            Text("Arrivals")
+          }
+          NavigationLink(destination: FlightBoard(boardName: "Departures", flightData: self.flightInfo.departures())){
+            Text("Departures")
+          }
           Spacer()
-        }
+          
+        })
+        .font(.title)
+        .padding(20)
       }
       .navigationBarTitle(Text("Mountain Airport"))
     }

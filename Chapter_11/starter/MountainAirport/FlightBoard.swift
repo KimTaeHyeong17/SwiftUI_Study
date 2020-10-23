@@ -29,13 +29,33 @@
 import SwiftUI
 
 struct FlightBoard: View {
-  var body: some View {
-    Text(/*@START_MENU_TOKEN@*/"Hello World!"/*@END_MENU_TOKEN@*/)
-  }
+    @State private var hideCancelled = false
+    var shownFlights: [FlightInformation] {
+        hideCancelled ?
+            flightData.filter { $0.status != .cancelled } :
+            flightData
+        
+    }
+    var boardName : String
+    var flightData: [FlightInformation]
+    var body: some View {
+        VStack {
+            List(shownFlights) { flight in
+                FlightRow(flight: flight)
+            }
+            .navigationBarTitle(boardName)
+            .navigationBarItems(trailing: Toggle(isOn: $hideCancelled, label: {
+                Text("Hide Cancelled")
+            })
+            )
+            
+        }
+        
+    }
 }
 
 struct FlightBoard_Previews: PreviewProvider {
-  static var previews: some View {
-    FlightBoard()
-  }
+    static var previews: some View {
+        FlightBoard(boardName: "Test", flightData: FlightInformation.generateFlights())
+    }
 }

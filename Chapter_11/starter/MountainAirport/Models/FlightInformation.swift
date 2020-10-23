@@ -227,3 +227,6 @@ extension Array where Element: FlightInformation {
     self.filter { $0.direction == .departure }
   }
 }
+extension FlightInformation: Identifiable {
+    
+}
