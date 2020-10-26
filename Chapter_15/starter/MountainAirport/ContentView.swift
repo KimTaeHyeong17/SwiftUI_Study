@@ -40,21 +40,24 @@ struct ContentView: View {
           .frame(width: 250, height: 250, alignment: .center)
         VStack(alignment: .leading, spacing: 5) {
           NavigationLink(destination: FlightBoard(boardName: "Arrivals",
-                  flightData: self.flightInfo
-                    .filter { $0.direction == .arrival })) {
+                                                  flightData: self.flightInfo
+                                                    .filter { $0.direction == .arrival })) {
             Text("Arrivals")
           }
           NavigationLink(destination: FlightBoard(boardName: "Departures",
-                flightData: self.flightInfo
-                  .filter { $0.direction == .departure })) {
+                                                  flightData: self.flightInfo
+                                                    .filter { $0.direction == .departure })) {
             Text("Departures")
+          }
+          NavigationLink(destination: FlightTimeline(flights: self.flightInfo)) {
+            Text("Flight Timeline")
           }
           NavigationLink(destination: AirportAwards()) {
             Text("Awards")
           }
           Spacer()
         }.font(.title).padding(20)
-      Spacer()
+        Spacer()
       }.navigationBarTitle(Text("Mountain Airport"))
     }
   }

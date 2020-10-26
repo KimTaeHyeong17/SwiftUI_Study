@@ -71,16 +71,23 @@ struct AirportAwards: View {
     VStack {
       Text("Your Awards (\(activeAwards.count))")
         .font(.title)
-      ScrollView {
-        VStack {
-          ForEach(activeAwards, id:\.self) { award in
-            VStack {
-              award.awardView
-              Text(award.title)
-            }.frame(width: 200, height: 200)
-          }
+      GridView(columns: 2, items: activeAwards) { gridWidth, item  in
+        VStack{
+          item.awardView
+          Text(item.title)
         }
+        .frame(width: gridWidth, height: gridWidth)
       }
+//      ScrollView {
+//        VStack {
+//          ForEach(activeAwards, id:\.self) { award in
+//            VStack {
+//              award.awardView
+//              Text(award.title)
+//            }.frame(width: 200, height: 200)
+//          }
+//        }
+//      }
     }
   }
 }
